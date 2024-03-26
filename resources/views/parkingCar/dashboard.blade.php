@@ -18,6 +18,8 @@
                     <tr>
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">No telp</th>
+                        <th scope="col">Jenis Mobil</th>
                         <th scope="col">Plat</th>
                         <th scope="col">Waktu Masuk</th>
                         <th scope="col">Waktu Keluar</th>
@@ -29,6 +31,8 @@
                     <tr>
                         <th scope="row">{{ $index + 1 }}</th>
                         <td>{{ $item->pemilik }}</td>
+                        <td>{{ $item->no_telp }}</td>
+                        <td>{{ $item->jenis_mobil }}</td>
                         <td>{{ $item->nopol }}</td>
                         <td>{{ $item->tanggal_masuk }}</td>
                         <td>{{ $item->tanggal_keluar }}</td>

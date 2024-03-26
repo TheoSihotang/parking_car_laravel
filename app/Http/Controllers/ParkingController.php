@@ -30,23 +30,27 @@ class ParkingController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'pemilik' => 'required',
-            'nopol' => 'required',
-            'no_telp' => 'required',
-            'tanggal_masuk' => 'nullable',
-            'tanggal_keluar' => 'nullable'
-        ]);
-
-        $data = ParkingCar::create([
-            'pemilik' => $request->pemilik,
-            'nopol' => $request->nopol,
-            'no_telp' => $request->no_telp,
-            'tanggal_masuk' => $request->tanggal_masuk,
-            'tanggal_keluar' => $request->tanggal_keluar
-        ]);
-
+        ParkingCar::create($request->all());
         return redirect()->route('parking.index')->with('success', 'Data Berhasil Ditambahkan');
+        // $this->validate($request, [
+        //     'pemilik' => 'required',
+        //     'jenis_mobil' => 'nullable',
+        //     'nopol' => 'required',
+        //     'no_telp' => 'required',
+        //     'tanggal_masuk' => 'nullable',
+        //     'tanggal_keluar' => 'nullable'
+        // ]);
+
+        // $data = ParkingCar::create([
+        //     'pemilik' => $request->pemilik,
+        //     'jenis_mobil' => $request->jenis_mobil,
+        //     'nopol' => $request->nopol,
+        //     'no_telp' => $request->no_telp,
+        //     'tanggal_masuk' => $request->tanggal_masuk,
+        //     'tanggal_keluar' => $request->tanggal_keluar
+        // ]);
+
+        // return redirect()->route('parking.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
