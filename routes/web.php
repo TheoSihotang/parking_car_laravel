@@ -32,7 +32,7 @@ Route::prefix('parking')->group(function () {
     Route::get('/create',[ParkingController::class, 'create'])->name('parking.create');
     Route::post('/save',[ParkingController::class, 'store'])->name('parking.store');
     Route::put('/dashboard/{id}',[ParkingController::class, 'edit'])->name('parking.edit');
-    Route::delete('/dashboard/{id}',[ParkingController::class, 'delete'])->name('parking.delete');
+    Route::delete('/dashboard/{id}',[ParkingController::class, 'destroy'])->name('parking.delete');
 })
 ;
 

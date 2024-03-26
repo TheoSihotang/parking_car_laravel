@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ParkingCar;
+use Illuminate\Http\RedirectResponse;
 
 class ParkingController extends Controller
 {
@@ -28,29 +29,10 @@ class ParkingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) : RedirectResponse
     {
         ParkingCar::create($request->all());
-        return redirect()->route('parking.index')->with('success', 'Data Berhasil Ditambahkan');
-        // $this->validate($request, [
-        //     'pemilik' => 'required',
-        //     'jenis_mobil' => 'nullable',
-        //     'nopol' => 'required',
-        //     'no_telp' => 'required',
-        //     'tanggal_masuk' => 'nullable',
-        //     'tanggal_keluar' => 'nullable'
-        // ]);
-
-        // $data = ParkingCar::create([
-        //     'pemilik' => $request->pemilik,
-        //     'jenis_mobil' => $request->jenis_mobil,
-        //     'nopol' => $request->nopol,
-        //     'no_telp' => $request->no_telp,
-        //     'tanggal_masuk' => $request->tanggal_masuk,
-        //     'tanggal_keluar' => $request->tanggal_keluar
-        // ]);
-
-        // return redirect()->route('parking.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('parking.index')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
 
     /**
@@ -83,6 +65,8 @@ class ParkingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = ParkingCar::find($id);
+        $data->delete();
+        return redirect()->route('parking.index')->with('success', 'Data Berhasil Di Hapus');
     }
 }

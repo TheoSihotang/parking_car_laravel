@@ -37,9 +37,15 @@
                         <td>{{ $item->tanggal_masuk }}</td>
                         <td>{{ $item->tanggal_keluar }}</td>
                         <td>
-                            <a href="{{ route('parking.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <span>
+                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('parking.delete', $item->id) }}" method="post">
+                                <a href="{{ route('parking.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             {{-- <a href="{{ route('parking.delete', $item->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            </span>
                         </td>
                     </tr>
                     @endforeach
