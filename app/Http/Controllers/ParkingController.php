@@ -35,29 +35,32 @@ class ParkingController extends Controller
         return redirect()->route('parking.index')->with(['success' => 'Data Berhasil Ditambahkan!']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        // $data = ParkingCar::find($id);
-        // return view('parkingCar.edit', compact('data'));
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $data = ParkingCar::findOrFail($id);
+        return view('parkingCar.edit', compact('data'));
+        // dd($data->id);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $newData= $request->validate([
+            'pemilik' => 'required',
+            'nopol' => 'required',
+            'jenis_mobil' => 'required',
+            'no_telp' => 'required',
+            'tanggal_keluar' => 'nullable'
+        ]);
+        ParkingCar::where('id', $request->id)->update($newData);
+
+        return redirect()->route('parking.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**

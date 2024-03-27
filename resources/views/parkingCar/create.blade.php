@@ -19,7 +19,7 @@
                         <label for="nama" class="form-label">No Telepon</label>
                         <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telepon" required>
                         <div class="invalid-feedback">
-                            Nama harus diisi
+                            Nomor Telepon harus diisi
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                         <label for="plat" class="form-label">Plat</label>
                         <input type="text" class="form-control" id="nopol" name="nopol" placeholder="No Polisi" required>
                         <div class="invalid-feedback">
-                            Plat harus diisi
+                            Nomor Plat harus diisi
                         </div>
                     </div>
                 </div>

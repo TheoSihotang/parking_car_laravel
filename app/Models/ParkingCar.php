@@ -13,14 +13,14 @@ class ParkingCar extends Model
      * fillable
      *
      * @var array
-    //  */
-    // protected $fillable = [
-    //     'pemilik',
-    //     'nopol',
-    //     'no_telp',
-    //     'tanggal_masuk',
-    //     'tanggal_keluar'
-    // ];
+     */
+    protected $fillable = [
+        'pemilik',
+        'nopol',
+        'no_telp',
+        'jenis_mobil',
+        'tanggal_masuk',
+        'tanggal_keluar'
+    ];
 
-    protected $guarded = ['id'];
 }

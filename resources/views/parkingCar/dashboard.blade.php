@@ -1,6 +1,7 @@
 <x-app-layout>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     </head>
+
     <body style="background: lightgray">
         <div class="container mt-5">
             <h1>Data Mobil</h1>
@@ -27,33 +29,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $index => $item)
-                    <tr>
-                        <th scope="row">{{ $index + 1 }}</th>
-                        <td>{{ $item->pemilik }}</td>
-                        <td>{{ $item->no_telp }}</td>
-                        <td>{{ $item->jenis_mobil }}</td>
-                        <td>{{ $item->nopol }}</td>
-                        <td>{{ $item->tanggal_masuk }}</td>
-                        <td>{{ $item->tanggal_keluar }}</td>
-                        <td>
-                            <span>
-                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('parking.delete', $item->id) }}" method="post">
-                                <a href="{{ route('parking.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            {{-- <a href="{{ route('parking.delete', $item->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                            </span>
-                        </td>
-                    </tr>
+                    @foreach ($data as $index => $item)
+                        <tr>
+                            <th scope="row">{{ $index + 1 }}</th>
+                            <td>{{ $item->pemilik }}</td>
+                            <td>{{ $item->no_telp }}</td>
+                            <td>{{ $item->jenis_mobil }}</td>
+                            <td>{{ $item->nopol }}</td>
+                            <td>{{ $item->tanggal_masuk }}</td>
+                            <td>{{ $item->tanggal_keluar }}</td>
+                            <td>
+                                <span class="d-flex gap-2 justify-content-center">
+                                    <a href="{{ route('parking.edit', $item->id) }}"
+                                        class="btn btn-warning btn-sm">Edit</a>
+                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                        action="{{ route('parking.delete', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </span>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
 
     </body>
+
     </html>
 
 </x-app-layout>
